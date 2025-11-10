@@ -3,6 +3,7 @@ import cors from 'cors'
 import {Mongo} from './database/mongo.js'
 import {config} from 'dotenv'
 import authRouter from './auth/auth.js'
+import usersRouter from './routes/users.js'
 
 //criando um servidor web com express
 //express: cria o servidor
@@ -32,6 +33,7 @@ async function main () {
     })  //requisicao quando eh acessado o app
 
     app.use('/auth', authRouter)
+    app.use('/users', usersRouter)
 
     app.listen(port, () => {
         console.log(`Server running on: http://${hostname}:${port}`)
